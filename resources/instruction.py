@@ -69,6 +69,16 @@ class InstructionResource(Resource):
 
         return instruction.data, HTTPStatus.OK
 
+    def delete(self, instruction_id):
+        instruction = next((instruction for instruction in instruction_list
+                            if instruction_id == instruction_id), None)
+        # if instruction not found
+        if instruction is None:
+            return {'message': 'instruction not found'}, HTTPStatus.NOT_FOUND
+
+        instruction_list.remove(instruction)
+
+        return {}, HTTPStatus.NO_CONTENT
 
 # class and functions for publishing/unpublishing an instruction
 class InstructionPublishResource(Resource):

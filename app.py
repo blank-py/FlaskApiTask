@@ -22,4 +22,4 @@ api.add_resource(InstructionPublishResource, '/instructions/<int:instruction_id>
 
 # run script with debugging turned on
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=False)
